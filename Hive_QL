@@ -36,9 +36,9 @@ table creation:
 	External table>create external table if not exists tableName
 	
 	command for complete sysntax:
-	CREATE TABLE [external][if not exists] employees ( name STRING, salary FLOAT, subordinates ARRAY<STRING>, deductions MAP<STRING, FLOAT>, address STRUCT<street:STRING, city:STRING, state:STRING, zip:INT>)ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' COLLECTION ITEMS TERMINATED BY ',' MAP KEYS TERMINATED BY ':' LINES TERMINATED BY '\n' STORED AS TEXTFILE COMMENT 'Description of the table' TBLPROPERTIES ('creator'='name', 'created_at'='date', ...) LOCATION '/user/hive/warehouse/dbname.db/employees';
+  CREATE EXTERNAL TABLE if not exists employee(name string, salary double , subordinates ARRAY<STRING>, deductions MAP<STRING, FLOAT>)ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' COLLECTION ITEMS TERMINATED BY ',' MAP KEYS TERMINATED BY ':' LINES TERMINATED BY '\n' STORED AS TEXTFILE;
 	
-  CREATE TABLE if not exists stocks (market string comment 'This is market column' , stock string comment 'This is stock code' , tradingdate date column 'This is market running date', open double comment 'This is opening value of stock',high double comment 'This is high value of stock', low double comment 'This is day low value of stock', close double comment 'This is closing date of stock', volume bigint comment'This is no os stocks exchanged', adj_close double comment 'This is previous fay closing value') comment 'This is stock data table');
+  CREATE TABLE if not exists stocks (market string comment 'This is market column' , stock string comment 'This is stock code' , tradingdate date comment 'This is market running date', open double comment 'This is opening value of stock',high double comment 'This is high value of stock', low double comment 'This is day low value of stock', close double comment 'This is closing date of stock', volume bigint comment'This is no os stocks exchanged', adj_close double comment 'This is previous fay closing value') comment 'This is stock data table');
 
  load data inpath local 'linux path' into table stocks ;
  
