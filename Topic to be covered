@@ -2,3 +2,5 @@
 File format
 Timestamp , date format , unix_timestamp
 serDe
+Functions
+bucketing -- algo to decide no of bucket 
