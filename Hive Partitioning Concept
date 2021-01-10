@@ -4,7 +4,7 @@ create table population(sno int, name string, age int, dist string, state string
 
 load data inpath '/india/population' into table pop;
 
-1	Ganesh	27	Prakasam	AP
+1	Naga	27	Prakasam	AP
 2	siva	32	Nellore	AP
 3	Pramod	32	Gorakhpur	UP
 4	ravi	30	Prakasam	AP
