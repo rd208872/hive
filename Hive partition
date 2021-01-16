@@ -1,0 +1,23 @@
+
+Partitions:
+=================
+
+ Partitions with internal/managed tables:
+To create partition while creating the table:
+ CREATE TABLE employees (name STRING, salary FLOAT, subordinates ARRAY<STRING>, deductions MAP<STRING, FLOAT>, address STRUCT<street:STRING, city:STRING, state:STRING,  
+zip:INT>) PARTITIONED BY (country STRING, state STRING);
+ 
+ To show the partitions:
+ > SHOW PARTITIONS employees ;
+ > SHOW PARTITIONS employees PARTITION(country='countryName');
+ 
+ Partitions with external tables:
+ CREATE EXTERNAL TABLE xyz ( hms INT, severity STRING, server STRING, process_id INT, message STRING) PARTITIONED BY (year INT, month INT, day INT) ROW FORMAT  
+DELIMITED FIELDS TERMINATED BY '\t';
+ 
+ Alter table to add partitions:
+ ALTER TABLE tableName ADD PARTITION(year = 2012, month = 1, day = 2)
+ 
+ Alter table to drop partitions:
+ ALTER TABLE log_messages DROP IF EXISTS PARTITION(year = 2011, month = 12, day = 2);
+
