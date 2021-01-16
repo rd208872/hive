@@ -1,0 +1,27 @@
+
+
+LOAD
+SELECT
+INSERT
+DELETE
+UPDATE
+EXPORT
+IMPORT
+
+Loading data into Hive Tables:
+------------------------------
+We can load data from local file system / Distributed file system into Hive Table:
+>LOAD DATA [LOCAL] INPATH 'employees' OVERWRITE INTO TABLE employees PARTITION (country = 'US', state = 'CA');
+
+Inserting data into tables from queries:
+>INSERT OVERWRITE TABLE employees PARTITION (country = 'US', state = 'OR') SELECT * FROM staged_employees se WHERE se.cnty = 'US' AND se.st = 'OR';
+
+Creating Tables and Loading Them in One Query:
+> CREATE TABLE ca_employees AS SELECT name, salary, address FROM employees WHERE se.state = 'CA';
+
+
+
+
+Exporting Data:
+--------------------------------
+>INSERT OVERWRITE LOCAL DIRECTORY '/tmp/ca_employees' SELECT name, salary, address FROM employees WHERE se.state = 'CA';
